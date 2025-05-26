@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Your Emails</title>
+    </head>
+
+    <body>
+        <h1>Your Emails</h1>
+        {% if emails %}
+        {% for email in emails %}
+        <div style="border: 1px solid #ccc; padding: 10px; margin: 10px;">
+            <strong>Subject:</strong> {{ email.subject }}<br>
+            <strong>From:</strong> {{ email.from.emailAddress.address if email.from }}<br>
+            <strong>To:</strong>
+            {% for recipient in email.toRecipients %}
+            {{ recipient.emailAddress.address }}{% if not loop.last %}, {% endif %}
+            {% endfor %}<br>
+            <strong>Sent At:</strong> {{ email.sentDateTime }}<br>
+            <strong>Preview:</strong> {{ email.bodyPreview }}<br>
+            <a href="{{ email.webLink }}" target="_blank">View in Outlook</a>
+        </div>
+        {% endfor %}
+        {% else %}
+        <p>No emails found.</p>
+        {% endif %}
+    </body>
+
+</html>
