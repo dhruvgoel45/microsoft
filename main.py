@@ -14,7 +14,7 @@ templates = Jinja2Templates(directory="templates")
 client_id = os.getenv("CLIENT_ID")
 client_secret = os.getenv("CLIENT_SECRET")
 authority = "https://login.microsoftonline.com/common"
-redirect_uri = os.getenv("REDIRECT_URI", "http://localhost:8000/auth/callback")
+redirect_uri = os.getenv("REDIRECT_URI", "https://testinglocal.onrender.com/auth/callback")
 SCOPES = ["Mail.Read"]
 
 msal_app = ConfidentialClientApplication(
